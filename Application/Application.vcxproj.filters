@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{107145F9-FC28-8746-6530-60A251072237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLEW">
+      <UniqueIdentifier>{2E56214C-9AE1-8E10-A3F2-11050FFDEA10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLEW\include">
+      <UniqueIdentifier>{A1CB0094-0D03-492B-160D-AD4E82C36F24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLEW\include\GLEW">
+      <UniqueIdentifier>{5FF34016-4BAE-30C2-F465-A90CE0FF7A52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLFW">
+      <UniqueIdentifier>{4F56214C-BBE1-8E10-C4F2-110530FDEA10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLFW\include">
+      <UniqueIdentifier>{C25C0B98-2E94-532F-379E-B752A3547A28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLFW\include\GLFW">
+      <UniqueIdentifier>{416188B9-2D1C-7865-D6D3-F0AFC26DC2F5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLM">
+      <UniqueIdentifier>{FF76D211-EB44-C617-D4D8-363EC045A27C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLM\GLM">
+      <UniqueIdentifier>{6EDC3E14-5AC0-FF69-C320-FABCAF23EAEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLM\GLM\detail">
+      <UniqueIdentifier>{70CC524C-DC8E-86D6-253F-156391405FB4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\GLM\GLM\simd">
+      <UniqueIdentifier>{8A2D139E-F664-5B35-FF6E-BF586B25822E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\eglew.h">
+      <Filter>ThirdParty\GLEW\include\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glew.h">
+      <Filter>ThirdParty\GLEW\include\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glxew.h">
+      <Filter>ThirdParty\GLEW\include\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\wglew.h">
+      <Filter>ThirdParty\GLEW\include\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3.h">
+      <Filter>ThirdParty\GLFW\include\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3native.h">
+      <Filter>ThirdParty\GLFW\include\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\common.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\exponential.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\geometric.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\integer.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\matrix.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\packing.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\platform.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\trigonometric.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\vector_relational.h">
+      <Filter>ThirdParty\GLM\GLM\simd</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ThirdParty\GLM\GLM\detail\glm.cpp">
+      <Filter>ThirdParty\GLM\GLM\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
