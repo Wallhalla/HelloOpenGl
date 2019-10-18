@@ -59,12 +59,15 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ThirdParty\GLEW\include;..\ThirdParty\GLFW\include;..\ThirdParty\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\GLEW\lib\Release\x64;..\ThirdParty\GLFW\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -72,6 +75,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ThirdParty\GLEW\include;..\ThirdParty\GLFW\include;..\ThirdParty\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -82,9 +86,29 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\GLEW\lib\Release\x64;..\ThirdParty\GLFW\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\eglew.h" />
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glew.h" />
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glxew.h" />
+    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\wglew.h" />
+    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3.h" />
+    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3native.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\common.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\exponential.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\geometric.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\integer.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\matrix.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\packing.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\platform.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\trigonometric.h" />
+    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\vector_relational.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ThirdParty\GLM\GLM\detail\glm.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
