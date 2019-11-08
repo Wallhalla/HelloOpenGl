@@ -25,7 +25,7 @@ project "Application"
 	links { "glfw3", "glew32s", "opengl32"}
 
 	filter "system:windows"
-		defines {"WINDOWS"}
+		defines {"WINDOWS", "GLEW_STATIC"}
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
