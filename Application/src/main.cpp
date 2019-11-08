@@ -40,17 +40,30 @@ int main(void)
 
 	glClearColor(0.0f, 0.f, 0.f, 1.f);
 
+	/* Dreieck */
+	GLuint triangleBuffer;
+	glGenBuffers(1, &triangleBuffer);
+
+	float points[] = {
+		-1.f, -1.f, 0.f,
+		1.f, -1.f, 0.f,
+		0.f, 0.5f, 0.f
+	};
+
+	glBindBuffer(GL_ARRAY_BUFFER, triangleBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 9, &points, GL_STATIC_DRAW);	
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glBegin(GL_TRIANGLES);
-			glVertex3f(1, 0, 0);			
-			glVertex3f(0, 1, 0);				
-			glVertex3f(0, 0, 1);			
-		glEnd();		
+		glBindBuffer(GL_ARRAY_BUFFER, triangleBuffer);
+		
+		glDrawArrays(GL_TRIANGLES, 3, GL_FLOAT);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);	
