@@ -1,4 +1,4 @@
-//#include "GLEW/glew.h"
+#include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
 #include <iostream>
 
@@ -10,9 +10,9 @@ int main(void)
 	if (!glfwInit())
 		return -1;
 	
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 1);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
@@ -21,23 +21,24 @@ int main(void)
 	{
 		glfwTerminate();
 		return -1;
-	}	
+	}		
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
-	///* Init GLEW */
-	//GLenum err = glewInit();
-	//if (GLEW_OK != err)
-	//{
-	//	/* Problem: glewInit failed, something is seriously wrong. */
-	//	fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-	//}
+	/* init glew */
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		/* problem: glewinit failed, something is seriously wrong. */
+		fprintf(stderr, "error: %s\n", glewGetErrorString(err));
+	}	
 
 	/* Print Infos */
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-
 	std::cout << glGetString(GL_VENDOR) << std::endl;
+
+	glClearColor(0.0f, 0.f, 0.f, 1.f);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
@@ -49,7 +50,7 @@ int main(void)
 			glVertex3f(1, 0, 0);			
 			glVertex3f(0, 1, 0);				
 			glVertex3f(0, 0, 1);			
-		glEnd();
+		glEnd();		
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);	
