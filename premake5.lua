@@ -11,7 +11,7 @@ project "Application"
    
 	targetdir "bin/%{cfg.buildcfg}-%{cfg.architecture}"
 
-	files { "**.h", "**.cpp" }
+	files { "Application/src/**.h", "Application/src/**.cpp" }
 	
 	includedirs {"ThirdParty/GLEW/include", "ThirdParty/GLFW/include", "ThirdParty/GLM"}
 	libdirs { "ThirdParty/GLEW/lib"}

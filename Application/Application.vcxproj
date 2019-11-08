@@ -91,24 +91,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\eglew.h" />
-    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glew.h" />
-    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\glxew.h" />
-    <ClInclude Include="..\ThirdParty\GLEW\include\GLEW\wglew.h" />
-    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3.h" />
-    <ClInclude Include="..\ThirdParty\GLFW\include\GLFW\glfw3native.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\common.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\exponential.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\geometric.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\integer.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\matrix.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\packing.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\platform.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\trigonometric.h" />
-    <ClInclude Include="..\ThirdParty\GLM\GLM\simd\vector_relational.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\ThirdParty\GLM\GLM\detail\glm.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
