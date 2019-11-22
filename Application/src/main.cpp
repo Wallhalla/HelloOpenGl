@@ -1,6 +1,7 @@
 #include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
 #include <iostream>
+#include "ShaderProgram.h"
 
 int main(void)
 {
@@ -38,32 +39,34 @@ int main(void)
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 	std::cout << glGetString(GL_VENDOR) << std::endl;
 
+	ShaderProgram program = ShaderProgram("res/shaders/Basic.shader");
+	program.Bind();
+
 	glClearColor(0.0f, 0.f, 0.f, 1.f);
 
 	/* Dreieck */
 	GLuint triangleBuffer;
 	glGenBuffers(1, &triangleBuffer);
 
-	float points[] = {
-		-1.f, -1.f, 0.f,
-		1.f, -1.f, 0.f,
-		0.f, 0.5f, 0.f
+	float points[6] = {
+		-0.5f, -0.5f,
+		0.0f, 0.5f,
+		0.5f, -0.5f
 	};
 
 	glBindBuffer(GL_ARRAY_BUFFER, triangleBuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 9, &points, GL_STATIC_DRAW);	
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), points, GL_STATIC_DRAW);	
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBindBuffer(GL_ARRAY_BUFFER, triangleBuffer);
+		glClear(GL_COLOR_BUFFER_BIT);		
 		
-		glDrawArrays(GL_TRIANGLES, 3, GL_FLOAT);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);		
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);	

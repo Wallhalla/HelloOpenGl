@@ -1,20 +1,39 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Application", "Application\Application.vcxproj", "{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLRenderer", "OpenGLRenderer\OpenGLRenderer.vcxproj", "{0F742BF4-90C5-44CA-AC6C-1051D1492E03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Debug|x64.ActiveCfg = Debug|x64
 		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Debug|x64.Build.0 = Debug|x64
+		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Debug|x86.ActiveCfg = Debug|x64
 		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Release|x64.ActiveCfg = Release|x64
 		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Release|x64.Build.0 = Release|x64
+		{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}.Release|x86.ActiveCfg = Release|x64
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Debug|x64.ActiveCfg = Debug|x64
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Debug|x64.Build.0 = Debug|x64
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Debug|x86.ActiveCfg = Debug|Win32
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Debug|x86.Build.0 = Debug|Win32
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Release|x64.ActiveCfg = Release|x64
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Release|x64.Build.0 = Release|x64
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Release|x86.ActiveCfg = Release|Win32
+		{0F742BF4-90C5-44CA-AC6C-1051D1492E03}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CF2F1C2-5AD4-4CD4-8269-8756FFB9C26C}
 	EndGlobalSection
 EndGlobal
