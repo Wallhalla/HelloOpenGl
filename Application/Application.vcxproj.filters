@@ -9,12 +9,12 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ShaderProgram.cpp" />
+    <ClCompile Include="src\Rendering\OpenGlWindow.cpp" />
+    <ClCompile Include="src\Rendering\WindowFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ShaderProgram.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
+    <ClInclude Include="src\Rendering\Window.h" />
+    <ClInclude Include="src\Rendering\OpenGlWindow.h" />
+    <ClInclude Include="src\Rendering\WindowFactory.h" />
   </ItemGroup>
 </Project>
