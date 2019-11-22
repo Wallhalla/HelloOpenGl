@@ -5,6 +5,10 @@
 
 #include <iostream>
 
+#include "Model.h"
+#include "OpenGlVertexBuffer.h"
+#include "ShaderProgram.h"
+
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
 	:m_Title(title), m_Width(width), m_Height(height), m_Window(nullptr)
 {
@@ -60,11 +64,28 @@ unsigned int OpenGlWindow::GetHeight() const
 
 void OpenGlWindow::Show()
 {
+	Model model;
+	OpenGlVertexBuffer buffer(model);
+
+	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
+	program.Bind();
+
+	glEnableVertexAttribArray(0);
+
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(MyVertex), BUFFER_OFFSET(0));
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 2 * sizeof(float), nullptr);
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
 	{
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);		
+
+		buffer.Bind();
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		buffer.Unbind();
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);
