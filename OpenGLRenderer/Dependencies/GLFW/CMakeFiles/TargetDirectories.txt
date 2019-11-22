@@ -1,0 +1,6 @@
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/CMakeFiles/uninstall.dir
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/CMakeFiles/INSTALL.dir
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/CMakeFiles/ALL_BUILD.dir
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/CMakeFiles/ZERO_CHECK.dir
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/src/CMakeFiles/glfw.dir
+C:/Users/SonDev/Desktop/Computergrafik/WiSe2019/Project/Computergrafik2019/Dependencies/GLFW/src/CMakeFiles/INSTALL.dir

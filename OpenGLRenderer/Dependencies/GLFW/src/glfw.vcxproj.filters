@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\vulkan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_joystick.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_thread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\wgl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\egl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\osmesa_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\mappings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Computergrafik2019\Dependencies\GLFW\src\glfw_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\win32_joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\wgl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\egl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\osmesa_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Libs\glfw-3.3\glfw-3.3\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6CC91CFD-ABDE-3D54-84E2-0670BCD0B72A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1DE0502F-12FA-3EB1-9A06-3169A8C7A227}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

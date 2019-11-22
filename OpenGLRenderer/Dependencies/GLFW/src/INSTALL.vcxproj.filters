@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\SonDev\Desktop\Computergrafik\WiSe2019\Project\Computergrafik2019\Dependencies\GLFW\CMakeFiles\972325c29f72953ab20ee540857b3054\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BCAFD31A-4CF8-3026-A52A-FE8372F8BD9F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
