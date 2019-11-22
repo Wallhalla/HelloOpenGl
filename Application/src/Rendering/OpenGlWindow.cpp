@@ -18,7 +18,7 @@ OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigne
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	m_Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -66,26 +66,21 @@ void OpenGlWindow::Show()
 {
 	Model model;
 	OpenGlVertexBuffer buffer(model);
+	buffer.Bind();	
 
-	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
-	program.Bind();
+	/*ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
+	program.Bind();*/
 
 	glEnableVertexAttribArray(0);
-
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(MyVertex), BUFFER_OFFSET(0));
-	glVertexAttribPointer(0, 3, GL_FLOAT, false, 2 * sizeof(float), nullptr);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);	
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
 	{
 		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);		
+		glClear(GL_COLOR_BUFFER_BIT);			
 
-		buffer.Bind();
-
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-
-		buffer.Unbind();
+		glDrawArrays(GL_TRIANGLES, 0, 3);		
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);

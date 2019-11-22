@@ -3,8 +3,12 @@
 class Model
 {
 public:
-	unsigned int GetSize() const;
+	Model();	
 
+	unsigned int GetSize() const;
 	void* GetData() const;
 
+private:
+	float* m_Data;
+	unsigned int m_Size;
 };

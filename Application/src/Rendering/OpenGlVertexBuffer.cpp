@@ -11,8 +11,8 @@ OpenGlVertexBuffer::OpenGlVertexBuffer(const Model& model)
 	glGenBuffers(1, &m_BufferId);
 
 	Bind();
-
-	glBufferData(GL_ARRAY_BUFFER, model.GetSize(), model.GetData(), GL_STATIC_DRAW);
+	float* data = (float*)model.GetData();
+	glBufferData(GL_ARRAY_BUFFER, model.GetSize(), data, GL_STATIC_DRAW);
 
 	Unbind();
 }
