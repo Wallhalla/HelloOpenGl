@@ -6,7 +6,7 @@
 #include <iostream>
 
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
-	:m_Title(title), m_Width(width), m_Height(height)
+	:m_Title(title), m_Width(width), m_Height(height), m_Window(nullptr)
 {
 	/* Initialize the library */
 	if (!glfwInit())

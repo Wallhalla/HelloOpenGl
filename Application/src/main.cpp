@@ -5,7 +5,7 @@ int main(void)
 {
 	Window* window = WindowFactory::CreateWindow("Title", 1920, 1080);	
 	
-	window->Show();	
+	window->Show();		
 	
 	delete window;
 	window = nullptr;
