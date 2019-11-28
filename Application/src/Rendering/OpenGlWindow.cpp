@@ -68,8 +68,8 @@ void OpenGlWindow::Show()
 	OpenGlVertexBuffer buffer(model);
 	buffer.Bind();	
 
-	/*ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
-	program.Bind();*/
+	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
+	program.Bind();
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);	
