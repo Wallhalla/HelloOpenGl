@@ -115,10 +115,6 @@
     <ClCompile Include="src\Rendering\WindowFactory.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\BasicFragment.shader" />
-    <None Include="resources\BasicVertex.shader" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
