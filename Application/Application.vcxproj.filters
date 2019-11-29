@@ -52,4 +52,8 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\BasicVertex.shader" />
+    <None Include="resources\BasicFragment.shader" />
+  </ItemGroup>
 </Project>

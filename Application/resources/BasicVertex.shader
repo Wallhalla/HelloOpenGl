@@ -1,6 +1,6 @@
 #version 330 core
 
-layout(location = 0) in vec2 position; // the position variable has attribute position 0
+layout(location = 0) in vec4 position;
 
 uniform mat4 ModelMatrix;
 
