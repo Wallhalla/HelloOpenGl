@@ -35,3 +35,6 @@ Wert aus glClearColor() (Standardmäßig Schwarz)
 
 - glfwPollEvents
 -- Behandelt alle ausstehenden Input-Events (f.e. Keyevents, Mouseevents etc)
+
+## Kompilieren eines Shaders
+-- siehe Documentation: https://www.khronos.org/opengl/wiki/Shader_Compilation
