@@ -1,6 +1,6 @@
 #include "Model.h"
 
-Model::Model()	
+Model::Model()		
 {
 	m_Data = new float[3*3] {
 		-0.5f, -0.5f, 0.0f, // links unten
@@ -11,6 +11,11 @@ Model::Model()
 	m_Size = 9 * sizeof(float);
 }
 
+Model::~Model()
+{
+	delete m_Data;
+}
+
 unsigned int Model::GetSize() const
 {
 	return m_Size;
@@ -19,4 +24,9 @@ unsigned int Model::GetSize() const
 void* Model::GetData() const
 {
 	return m_Data;
+}
+
+Transform& Model::GetTransform()
+{
+	return m_transform;
 }

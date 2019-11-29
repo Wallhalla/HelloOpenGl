@@ -2,6 +2,8 @@
 
 #include <string>
 
+class Model;
+
 class ShaderProgram
 {
 public:
@@ -9,6 +11,8 @@ public:
 
 	void Bind();
 	void Unbind();
+
+	void SetModelMatrix(Model& model);
 
 private:
 
