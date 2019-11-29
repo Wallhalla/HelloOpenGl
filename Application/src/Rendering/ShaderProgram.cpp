@@ -7,12 +7,11 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>      // std::ifstream
-
-using namespace std;
-
 #include "Model.h"
 #include "GLM/glm.hpp"
 #include "GLM/gtc/matrix_transform.hpp"
+
+using namespace std;
 
 ShaderProgram::ShaderProgram(const std::string& vertexShaderFile, const std::string& fragmentShaderFile)
 {
@@ -127,7 +126,7 @@ ShaderProgram::ShaderProgram(const std::string& vertexShaderFile, const std::str
 	glDetachShader(m_ProgramId, fragmentShader);
 }
 
-string ShaderProgram::ParseFile(const std::string& shaderfile)
+
 void ShaderProgram::SetModelMatrix(Model& model)
 {
 	Transform& trans = model.GetTransform();
@@ -138,7 +137,7 @@ void ShaderProgram::SetModelMatrix(Model& model)
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &translation[0][0]);
 }
 
-void ShaderProgram::Parse(const std::string& vertexShaderFile, const std::string& fragmentShaderFile)
+string ShaderProgram::ParseFile(const std::string& shaderfile)
 {
 	ifstream stream(shaderfile);
 
