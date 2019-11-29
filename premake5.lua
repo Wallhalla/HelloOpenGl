@@ -22,10 +22,13 @@ project "Application"
 		libdirs { "ThirdParty/GLFW/lib-vc2017"}
 	end
 	
-	links { "glfw3", "glew32s", "opengl32"}
-
 	filter "system:windows"
+		links { "glfw3", "glew32s", "opengl32"}
 		defines {"WINDOWS", "GLEW_STATIC"}
+
+	filter "system:linux"
+		links { "GL", "glfw", "GLEW", "glut" }
+		defines {"LINUX"}
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
