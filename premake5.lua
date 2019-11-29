@@ -22,6 +22,11 @@ project "Application"
 		libdirs { "ThirdParty/GLFW/lib-vc2017"}
 	end
 	
+
+	-- copy a file from the objects directory to the target directory
+	-- postbuildcommands 	{
+	-- "os.mkdir(resources) {COPY} resources %{cfg.targetdir}"}
+
 	filter "system:windows"
 		links { "glfw3", "glew32s", "opengl32"}
 		defines {"WINDOWS", "GLEW_STATIC"}

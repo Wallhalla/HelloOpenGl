@@ -27,6 +27,7 @@
     <ClInclude Include="src\Rendering\WindowFactory.h">
       <Filter>Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rendering\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rendering\Model.cpp">
@@ -45,5 +46,6 @@
       <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Rendering\Transform.cpp" />
   </ItemGroup>
 </Project>

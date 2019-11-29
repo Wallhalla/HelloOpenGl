@@ -3,6 +3,10 @@
 #include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
 
+#include "Model.h"
+#include "GLM/glm.hpp"
+#include "GLM/gtc/matrix_transform.hpp"
+
 ShaderProgram::ShaderProgram(const std::string& vertexShaderFile, const std::string& fragmentShaderFile)
 {
 	m_ProgramId = glCreateProgram();
@@ -21,6 +25,16 @@ void ShaderProgram::Bind()
 void ShaderProgram::Unbind()
 {
 	glUseProgram(0);
+}
+
+void ShaderProgram::SetModelMatrix(Model& model)
+{
+	Transform& trans = model.GetTransform();
+	GLint locationId = glGetUniformLocation(m_ProgramId, "ModelMatrix");
+
+	const glm::mat4 translation = glm::translate(glm::mat4(1.f), trans.GetTranslation());	
+
+	glUniformMatrix4fv(locationId, 1, GL_FALSE, &translation[0][0]);
 }
 
 void ShaderProgram::Parse(const std::string& vertexShaderFile, const std::string& fragmentShaderFile)
