@@ -25,8 +25,8 @@ project "Application"
 	links { "glfw3", "glew32s", "opengl32"}
 
 	-- copy a file from the objects directory to the target directory
-	-- postbuildcommands 	{
-	-- "os.mkdir(resources) {COPY} resources %{cfg.targetdir}"}
+	postbuildcommands 	{
+	"{COPY} resources %{cfg.targetdir}/resources"}
 
 	filter "system:windows"
 		defines {"WINDOWS", "GLEW_STATIC"}

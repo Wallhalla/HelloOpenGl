@@ -18,6 +18,9 @@
     <ClInclude Include="src\Rendering\ShaderProgram.h">
       <Filter>Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rendering\Transform.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rendering\VertexBuffer.h">
       <Filter>Rendering</Filter>
     </ClInclude>
@@ -27,7 +30,6 @@
     <ClInclude Include="src\Rendering\WindowFactory.h">
       <Filter>Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rendering\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rendering\Model.cpp">
@@ -42,10 +44,12 @@
     <ClCompile Include="src\Rendering\ShaderProgram.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rendering\Transform.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rendering\WindowFactory.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Rendering\Transform.cpp" />
   </ItemGroup>
 </Project>
