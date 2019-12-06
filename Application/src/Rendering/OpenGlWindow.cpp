@@ -86,16 +86,17 @@ void OpenGlWindow::Show()
 
 	Transform& trans = model.GetTransform();
 
-	trans.SetScale(80.f, 80.f, 80.f);
+	trans.SetTranslation(0.f, 0.f, -20.f);
+	//trans.SetScale(20.f, 20.f, 20.f);
 	
 	program.SetModelMatrix(model);
 
+	float aspectRatio = 1920.f / 1080.f;
 
-	float ratio = 1920.f / 1080.f;
+	glm::mat4 perspective = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
+	//glm::mat4 orthographic = glm::ortho(-100.f * ratio, 100.f * ratio, -100.f, 100.f, 1.0f, -1.f);
 
-	glm::mat4 projection = glm::ortho(-100.f * ratio, 100.f * ratio, -100.f, 100.f, 1.0f, -1.f);
-
-	program.SetProjectionMatrix(projection);
+	program.SetProjectionMatrix(perspective);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
