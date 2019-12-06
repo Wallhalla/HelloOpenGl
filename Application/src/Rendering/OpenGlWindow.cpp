@@ -84,10 +84,7 @@ void OpenGlWindow::Show()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);	
 
-	Transform& trans = model.GetTransform();
-
-	trans.SetTranslation(0.f, 0.f, -20.f);
-	//trans.SetScale(20.f, 20.f, 20.f);
+	Transform& trans = model.GetTransform();	
 	
 	program.SetModelMatrix(model);
 
@@ -98,14 +95,85 @@ void OpenGlWindow::Show()
 
 	program.SetProjectionMatrix(perspective);
 
+	glEnable(GL_DEPTH_TEST);
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
 	{
 		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);			
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);			
 
 		// Index buffer
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+
+		// Draw Front
+		trans.SetTranslation(0.f, 0.f, -20.f);
+		program.SetModelMatrix(model);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+		
+		// Draw Back
+		trans.SetTranslation(0.f, 0.f, -22.f);
+		trans.SetRotation(0.0f, 180.f, 0.f);
+		program.SetModelMatrix(model);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+
+		// Draw Left
+		trans.SetTranslation(-1.f, 0.f, -21.f);
+		trans.SetRotation(0.0f, 90.f, 0.f);
+		program.SetModelMatrix(model);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+
+		// Draw Right
+		trans.SetTranslation(1.f, 0.f, -21.f);
+		trans.SetRotation(0.0f, -90.f, 0.f);
+		program.SetModelMatrix(model);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+
+		// Draw Top
+		trans.SetTranslation(0.f, 1.f, -21.f);
+		trans.SetRotation(90.f, 0.f, 0.f);
+		program.SetModelMatrix(model);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+
+		// Draw Bottom
+		trans.SetTranslation(0.f, -1.f, -21.f);
+		trans.SetRotation(-90.f, 0.f, 0.f);
+		program.SetModelMatrix(model);
 
 		// Draw the triangles !
 		glDrawElements(
