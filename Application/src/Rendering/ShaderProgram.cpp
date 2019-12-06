@@ -132,9 +132,13 @@ void ShaderProgram::SetModelMatrix(Model& model)
 	Transform& trans = model.GetTransform();
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ModelMatrix");
 
-	const glm::mat4 translation = glm::translate(glm::mat4(1.f), trans.GetTranslation());	
+	glm::mat4 translation = glm::translate(glm::mat4(1.f), trans.GetTranslation());
+	glm::mat4 rotation = glm::rotate(glm::mat4(1.f), 0.0f, glm::vec3(1.f, 0.f, 0.0f));
+	glm::mat4 scale = glm::scale(glm::mat4(1.f), trans.GetScale());
 
-	glUniformMatrix4fv(locationId, 1, GL_FALSE, &translation[0][0]);
+	const glm::mat4 modelmatrix = translation * rotation * scale;
+
+	glUniformMatrix4fv(locationId, 1, GL_FALSE, &modelmatrix[0][0]);
 }
 
 string ShaderProgram::ParseFile(const std::string& shaderfile)

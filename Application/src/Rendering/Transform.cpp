@@ -3,8 +3,8 @@
 Transform::Transform()	
 {
 	m_translation = glm::vec3{ 0.f, 0.f, 0.f};
-	m_rotation = glm::vec4{ 0.f, 0.f, 0.f, 1.f };
-	m_scale = glm::vec4{ 1.f, 1.f, 1.f, 1.f };
+	m_rotation = glm::vec3{ 0.f, 0.f, 0.f};
+	m_scale = glm::vec3{1.0f, 1.0f, 1.0f};
 }
 
 glm::vec3 Transform::GetTranslation() const
@@ -12,12 +12,12 @@ glm::vec3 Transform::GetTranslation() const
 	return m_translation;
 }
 
-glm::vec4 Transform::GetRotation() const
+glm::vec3 Transform::GetRotation() const
 {
 	return m_rotation;
 }
 
-glm::vec4 Transform::GetScale() const
+glm::vec3 Transform::GetScale() const
 {
 	return m_scale;
 }

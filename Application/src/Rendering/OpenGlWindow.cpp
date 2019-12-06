@@ -76,7 +76,7 @@ void OpenGlWindow::Show()
 
 	Transform& trans = model.GetTransform();
 
-	trans.SetTranslation(0.5f, 0.f, 0.f);
+	trans.SetScale(0.5f, 0.5f, 0.5f);
 
 	program.SetModelMatrix(model);
 
