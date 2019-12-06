@@ -68,6 +68,16 @@ void OpenGlWindow::Show()
 	OpenGlVertexBuffer buffer(model);
 	buffer.Bind();		
 
+	unsigned int indices[] = {
+		0, 1, 3, 0, 2, 3
+	};
+
+	GLuint elementbuffer;
+	glGenBuffers(1, &elementbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+
+
 	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
 	program.Bind();
 
@@ -76,9 +86,16 @@ void OpenGlWindow::Show()
 
 	Transform& trans = model.GetTransform();
 
-	trans.SetScale(0.5f, 0.5f, 0.5f);
-
+	trans.SetScale(80.f, 80.f, 80.f);
+	
 	program.SetModelMatrix(model);
+
+
+	float ratio = 1920.f / 1080.f;
+
+	glm::mat4 projection = glm::ortho(-100.f * ratio, 100.f * ratio, -100.f, 100.f, 1.0f, -1.f);
+
+	program.SetProjectionMatrix(projection);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
@@ -86,7 +103,16 @@ void OpenGlWindow::Show()
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);			
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);		
+		// Index buffer
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			6,					// count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);

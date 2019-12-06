@@ -2,13 +2,14 @@
 
 Model::Model()		
 {
-	m_Data = new float[3*3] {
-		-0.5f, -0.5f, 0.0f, // links unten
-		0.5f, -0.5f, 0.0f,	// rechts unten
-		0.0f, 0.5f, 0.f	// Mitte oben
+	m_Data = new float[4*3] {
+		-1.0f, -1.0f, 0.0f, // links unten
+		1.0f, -1.0f, 0.0f,	// rechts unten
+		-1.0f, 1.0f, 0.f,	// links oben
+		1.0f, 1.0f, 0.f		// rechts oben
 	};
 
-	m_Size = 9 * sizeof(float);
+	m_Size = 12 * sizeof(float);
 }
 
 Model::~Model()

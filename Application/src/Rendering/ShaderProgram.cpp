@@ -9,7 +9,6 @@
 #include <fstream>      // std::ifstream
 #include "Model.h"
 #include "GLM/glm.hpp"
-#include "GLM/gtc/matrix_transform.hpp"
 
 using namespace std;
 
@@ -139,6 +138,13 @@ void ShaderProgram::SetModelMatrix(Model& model)
 	const glm::mat4 modelmatrix = translation * rotation * scale;
 
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &modelmatrix[0][0]);
+}
+
+void ShaderProgram::SetProjectionMatrix(const glm::mat4& projection)
+{	
+	GLint locationId = glGetUniformLocation(m_ProgramId, "ProjectionMatrix");
+
+	glUniformMatrix4fv(locationId, 1, GL_FALSE, &projection[0][0]);
 }
 
 string ShaderProgram::ParseFile(const std::string& shaderfile)

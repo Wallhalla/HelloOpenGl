@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "GLM/gtc/matrix_transform.hpp"
 
 class Model;
 
@@ -13,6 +14,7 @@ public:
 	void Unbind();
 
 	void SetModelMatrix(Model& model);
+	void SetProjectionMatrix(const glm::mat4& projection);
 
 private:
 
