@@ -5,7 +5,7 @@
 class Cube
 {
 public:
-	Cube(const class ShaderProgram& shader);
+	Cube(class ShaderProgram& shader);
 
 	void Draw();
 	Transform& GetTransform();
@@ -13,4 +13,10 @@ public:
 private:
 	Transform m_transform;
 	float* m_Data;
+	unsigned int* m_Indices;
+
+	unsigned int m_buffer;
+	unsigned int m_ibo;
+
+	class ShaderProgram& m_Shader;
 };

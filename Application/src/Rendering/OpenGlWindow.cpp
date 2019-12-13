@@ -8,6 +8,7 @@
 #include "Model.h"
 #include "OpenGlVertexBuffer.h"
 #include "ShaderProgram.h"
+#include "Cube.h"
 
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
 	:m_Title(title), m_Width(width), m_Height(height), m_Window(nullptr)
@@ -64,19 +65,7 @@ unsigned int OpenGlWindow::GetHeight() const
 
 void OpenGlWindow::Show()
 {
-	Model model;
-	OpenGlVertexBuffer buffer(model);
-	buffer.Bind();		
-
-	unsigned int indices[] = {
-		0, 1, 3, 0, 2, 3
-	};
-
-	GLuint elementbuffer;
-	glGenBuffers(1, &elementbuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
-
+	
 
 	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
 	program.Bind();
@@ -84,9 +73,9 @@ void OpenGlWindow::Show()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);	
 
-	Transform& trans = model.GetTransform();	
-	
-	program.SetModelMatrix(model);
+	Cube cube(program);
+
+	Transform& trans = cube.GetTransform();	
 
 	float aspectRatio = 1920.f / 1080.f;
 
@@ -95,10 +84,13 @@ void OpenGlWindow::Show()
 
 	program.SetProjectionMatrix(perspective);
 	
-	glm::mat4 camera = 
-		glm::lookAt(glm::vec3(10.f, 0.f, -15.f), glm::vec3(0.f, 0.f, -15.f + -1.f), glm::vec3(0.f, 1.f, 0.f));
+	glm::mat4 camera = glm::mat4(1.f);/*
+		glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f));*/
 
 	program.SetViewMatrix(camera);
+
+	GLint locationId = glGetUniformLocation(program.m_ProgramId, "ModelMatrix");
+	glUniformMatrix4fv(locationId, 1, GL_FALSE, &camera[0][0]);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -108,85 +100,87 @@ void OpenGlWindow::Show()
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);			
 
-		// Index buffer
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+		cube.Draw();
 
-		// Draw Front
-		trans.SetTranslation(0.f, 0.f, -20.f);
-		program.SetModelMatrix(model);
+		//// Index buffer
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
-		
-		// Draw Back
-		trans.SetTranslation(0.f, 0.f, -22.f);
-		trans.SetRotation(0.0f, 180.f, 0.f);
-		program.SetModelMatrix(model);
+		//// Draw Front
+		//trans.SetTranslation(0.f, 0.f, -20.f);
+		//program.SetModelMatrix(cube);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
+		//
+		//// Draw Back
+		//trans.SetTranslation(0.f, 0.f, -22.f);
+		//trans.SetRotation(0.0f, 180.f, 0.f);
+		//program.SetModelMatrix(model);
 
-		// Draw Left
-		trans.SetTranslation(-1.f, 0.f, -21.f);
-		trans.SetRotation(0.0f, 90.f, 0.f);
-		program.SetModelMatrix(model);
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//// Draw Left
+		//trans.SetTranslation(-1.f, 0.f, -21.f);
+		//trans.SetRotation(0.0f, 90.f, 0.f);
+		//program.SetModelMatrix(model);
 
-		// Draw Right
-		trans.SetTranslation(1.f, 0.f, -21.f);
-		trans.SetRotation(0.0f, -90.f, 0.f);
-		program.SetModelMatrix(model);
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//// Draw Right
+		//trans.SetTranslation(1.f, 0.f, -21.f);
+		//trans.SetRotation(0.0f, -90.f, 0.f);
+		//program.SetModelMatrix(model);
 
-		// Draw Top
-		trans.SetTranslation(0.f, 1.f, -21.f);
-		trans.SetRotation(90.f, 0.f, 0.f);
-		program.SetModelMatrix(model);
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//// Draw Top
+		//trans.SetTranslation(0.f, 1.f, -21.f);
+		//trans.SetRotation(90.f, 0.f, 0.f);
+		//program.SetModelMatrix(model);
 
-		// Draw Bottom
-		trans.SetTranslation(0.f, -1.f, -21.f);
-		trans.SetRotation(-90.f, 0.f, 0.f);
-		program.SetModelMatrix(model);
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
-		// Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			6,					// count
-			GL_UNSIGNED_INT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//// Draw Bottom
+		//trans.SetTranslation(0.f, -1.f, -21.f);
+		//trans.SetRotation(-90.f, 0.f, 0.f);
+		//program.SetModelMatrix(model);
+
+		//// Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	6,					// count
+		//	GL_UNSIGNED_INT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);

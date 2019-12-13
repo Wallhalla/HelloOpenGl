@@ -17,7 +17,7 @@ public:
 	void SetProjectionMatrix(const glm::mat4& projection);
 	void SetViewMatrix(const glm::mat4& viewMatrix);
 
-private:
+public:
 
 	std::string ParseFile(const std::string& shaderfile);
 
