@@ -25,6 +25,7 @@ project "Application"
 
 	-- copy a file from the objects directory to the target directory
 	postbuildcommands 	{
+	"{RMDIR} %{cfg.targetdir}/resources",
 	"{COPY} resources %{cfg.targetdir}/resources"}
 
 	filter "system:windows"
