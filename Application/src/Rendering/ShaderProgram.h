@@ -15,6 +15,7 @@ public:
 
 	void SetModelMatrix(Model& model);
 	void SetProjectionMatrix(const glm::mat4& projection);
+	void SetViewMatrix(const glm::mat4& viewMatrix);
 
 private:
 

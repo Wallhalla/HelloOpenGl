@@ -165,6 +165,13 @@ void ShaderProgram::SetProjectionMatrix(const glm::mat4& projection)
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &projection[0][0]);
 }
 
+void ShaderProgram::SetViewMatrix(const glm::mat4& viewMatrix)
+{
+	GLint locationId = glGetUniformLocation(m_ProgramId, "ViewMatrix");
+
+	glUniformMatrix4fv(locationId, 1, GL_FALSE, &viewMatrix[0][0]);
+}
+
 string ShaderProgram::ParseFile(const std::string& shaderfile)
 {
 	ifstream stream(shaderfile);

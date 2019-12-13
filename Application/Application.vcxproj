@@ -97,6 +97,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Rendering\Cube.h" />
     <ClInclude Include="src\Rendering\Model.h" />
     <ClInclude Include="src\Rendering\OpenGlVertexBuffer.h" />
     <ClInclude Include="src\Rendering\OpenGlWindow.h" />
@@ -107,6 +108,7 @@
     <ClInclude Include="src\Rendering\WindowFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Rendering\Cube.cpp" />
     <ClCompile Include="src\Rendering\Model.cpp" />
     <ClCompile Include="src\Rendering\OpenGlVertexBuffer.cpp" />
     <ClCompile Include="src\Rendering\OpenGlWindow.cpp" />

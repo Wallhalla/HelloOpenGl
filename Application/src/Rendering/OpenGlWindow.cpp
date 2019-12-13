@@ -91,9 +91,14 @@ void OpenGlWindow::Show()
 	float aspectRatio = 1920.f / 1080.f;
 
 	glm::mat4 perspective = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
-	//glm::mat4 orthographic = glm::ortho(-100.f * ratio, 100.f * ratio, -100.f, 100.f, 1.0f, -1.f);
+	//glm::mat4 orthographic = glm::ortho(-100.f * ratio, 100.f * ratio, -100.f, 100.f, 1.0f, -1.f);	
 
 	program.SetProjectionMatrix(perspective);
+	
+	glm::mat4 camera = 
+		glm::lookAt(glm::vec3(10.f, 0.f, -15.f), glm::vec3(0.f, 0.f, -15.f + -1.f), glm::vec3(0.f, 1.f, 0.f));
+
+	program.SetViewMatrix(camera);
 
 	glEnable(GL_DEPTH_TEST);
 
