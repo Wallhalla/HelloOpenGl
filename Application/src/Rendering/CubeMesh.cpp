@@ -13,35 +13,69 @@ const static unsigned int s_Indices[36]
 	// front
 	0, 1, 2,
 	2, 3, 0,
-	// right
-	1, 5, 6,
-	6, 2, 1,
+
 	// back
-	7, 6, 5,
-	5, 4, 7,
+	4, 5, 6,
+	6, 7, 4,
+
 	// left
-	4, 0, 3,
-	3, 7, 4,
-	// bottom
-	4, 5, 1,
-	1, 0, 4,
+	8, 9, 10,
+	10, 11, 8,
+
+	// right
+	12, 13, 14,
+	14, 15, 12,
+	
 	// top
-	3, 2, 6,
-	6, 7, 3
+	16, 17, 18,
+	18, 19, 16,
+
+	// bottom
+	20, 21, 22,
+	22, 23, 20
+	
 };
+
+static glm::vec4 Red(1.f, 0.f, 0.f, 1.f);
+static glm::vec4 Green(0.f, 1.f, 0.f, 1.f);
+static glm::vec4 Blue(0.f, 0.f, 1.f, 1.f);
+static glm::vec4 Grey(0.3f, 0.3f, 0.3f, 1.f);
+static glm::vec4 White(1.f, 1.f, 1.f, 1.f);
+static glm::vec4 Yellow(1.f, 1.f, 0.f, 1.f);
+static glm::vec4 Black(0.f, 0.f, 0.f, 1.f);
 
 static Vertex s_Vertices[]
 {
 	// front
-	Vertex(glm::vec3(-1.0, -1.0,  1.0)),
-	Vertex(glm::vec3(1.0, -1.0,  1.0)),
-	Vertex(glm::vec3(1.0,  1.0,  1.0)),
-	Vertex(glm::vec3(-1.0,  1.0,  1.0)),
+	Vertex(glm::vec3(-1.0, -1.0,  1.0), Red),	// 0 links unten vorne
+	Vertex(glm::vec3(1.0, -1.0,  1.0), Red),	// 1 rechts unten vorne
+	Vertex(glm::vec3(1.0,  1.0,  1.0), Red),	// 2 rechts oben vorne
+	Vertex(glm::vec3(-1.0,  1.0,  1.0), Red),	// 3 links oben vorne
 	// back
-	Vertex(glm::vec3(-1.0, -1.0, -1.0)),
-	Vertex(glm::vec3(1.0, -1.0, -1.0)),
-	Vertex(glm::vec3(1.0,  1.0, -1.0)),
-	Vertex(glm::vec3(-1.0,  1.0, -1.0))
+	Vertex(glm::vec3(-1.0, -1.0, -1.0), Green),	// 4 links unten hinten
+	Vertex(glm::vec3(1.0, -1.0, -1.0), Green),	// 5 rechts unten hinten
+	Vertex(glm::vec3(1.0,  1.0, -1.0), Green),	// 6 rechts oben hinten
+	Vertex(glm::vec3(-1.0,  1.0, -1.0), Green),	// 7 links oben hinten
+	// left
+	Vertex(glm::vec3(-1.0, -1.0, -1.0), Blue),	// 8 links unten hinten
+	Vertex(glm::vec3(-1.0, -1.0, 1.0), Blue),	// 9 links unten vorne
+	Vertex(glm::vec3(-1.0,  1.0, 1.0), Blue),	// 10 links oben vorne
+	Vertex(glm::vec3(-1.0,  1.0, -1.0), Blue),	// 11 links oben hinten
+	// right
+	Vertex(glm::vec3(1.0, -1.0, 1.0), Grey),		// 12 rechts unten vorne
+	Vertex(glm::vec3(1.0, -1.0, -1.0), Grey),		// 13 rechts unten hinten
+	Vertex(glm::vec3(1.0,  1.0, -1.0), Grey),		// 14 rechts oben hinten
+	Vertex(glm::vec3(1.0,  1.0, 1.0), Grey),		// 15 rechts oben vorne
+	// top
+	Vertex(glm::vec3(-1.0, 1.0, 1.0), Yellow),		// 16 links oben vorne
+	Vertex(glm::vec3(1.0, 1.0, 1.0), Yellow),		// 17 rechts oben vorne
+	Vertex(glm::vec3(1.0,  1.0, -1.0), Yellow),		// 18 rechts oben hinten
+	Vertex(glm::vec3(-1.0,  1.0, -1.0), Yellow),	// 19 links oben hinten
+	// bottom
+	Vertex(glm::vec3(-1.0, -1.0, -1.0), White),		// 20 links unten hinten
+	Vertex(glm::vec3(1.0, -1.0, -1.0), White),		// 21 rechts unten hinten
+	Vertex(glm::vec3(1.0,  -1.0, 1.0), White),		// 22 rechts unten vorne
+	Vertex(glm::vec3(-1.0,  -1.0, 1.0), White)		// 23 links unten vorne
 };
 
 void CubeMesh::Load()
@@ -86,7 +120,10 @@ void CubeMesh::Draw() const
 	Bind();
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (const void*) offsetof(Vertex, Position));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*) offsetof(Vertex, Position));
+
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Color));
 
 	// Draw the triangles !
 	glDrawElements(
@@ -95,5 +132,6 @@ void CubeMesh::Draw() const
 		GL_UNSIGNED_INT,							// type
 		(void*)0									// element array buffer offset
 	);
+
 	Unbind();
 }
