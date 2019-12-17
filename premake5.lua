@@ -20,6 +20,8 @@ project "Application"
 		libdirs { "ThirdParty/GLFW/lib-vc2019"}
 	elseif _ACTION == "vs2017" then
 		libdirs { "ThirdParty/GLFW/lib-vc2017"}
+	elseif _ACTION == "vs2015" then
+		libdirs { "ThirdParty/GLFW/lib-vc2015"}
 	end
 	
 

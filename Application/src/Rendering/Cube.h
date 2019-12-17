@@ -1,22 +1,20 @@
 #pragma once
-#include "OpenGlVertexBuffer.h"
 #include "Transform.h"
+#include "Vertex.h"
+#include "Model.h"
 
-class Cube
+class Cube : public Model
 {
 public:
-	Cube(class ShaderProgram& shader);
+	Cube();
 
-	void Draw();
-	Transform& GetTransform();
+	void Bind();
+	void Unbind();
+	void Draw(class ShaderProgram& shader);
 
 private:
-	Transform m_transform;
-	float* m_Data;
-	unsigned int* m_Indices;
-
+	Vertex m_Vertices[8];
+	
 	unsigned int m_buffer;
-	unsigned int m_ibo;
-
-	class ShaderProgram& m_Shader;
+	unsigned int m_ibo;	
 };
