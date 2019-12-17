@@ -66,22 +66,16 @@ void OpenGlWindow::Show()
 {
 	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
 	program.Bind();
-
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
 	Cube cube;
 
 	float aspectRatio = 1920.f / 1080.f;
 
-	/*glm::mat4 perspective = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);*/
-	glm::mat4 orthographic = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);
+	glm::mat4 perspective = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
+	/*glm::mat4 orthographic = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
 
-	program.SetProjectionMatrix(orthographic);
+	program.SetProjectionMatrix(perspective);
 	
-	glm::mat4 camera = glm::mat4(1.f);/*
-		glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));*/
+	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
 
 	program.SetViewMatrix(camera);	
 
@@ -89,12 +83,11 @@ void OpenGlWindow::Show()
 
 	Transform& trans = cube.GetTransform();	
 	trans.SetTranslation(0.f, 0.f, -10.f);	
-
 	program.SetModelMatrix(cube);
 	
 	cube.Bind();
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), nullptr);
 	cube.Unbind();
 
 	/* Loop until the user closes the window */
