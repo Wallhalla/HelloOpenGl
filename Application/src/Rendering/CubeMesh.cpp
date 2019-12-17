@@ -2,6 +2,7 @@
 
 #include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
+#include "Vertex.h"
 
 bool CubeMesh::m_IsLoaded = false;
 unsigned int CubeMesh::m_Vbo = 0;
@@ -29,19 +30,36 @@ const static unsigned int s_Indices[36]
 	6, 7, 3
 };
 
-static float s_Vertices[]
+static Vertex s_Vertices[]
 {
 	// front
-	-1.0, -1.0,  1.0,
-	1.0, -1.0,  1.0,
-	1.0,  1.0,  1.0,
-	-1.0,  1.0,  1.0,
+	Vertex(glm::vec3(-1.0, -1.0,  1.0)),
+	Vertex(glm::vec3(1.0, -1.0,  1.0)),
+	Vertex(glm::vec3(1.0,  1.0,  1.0)),
+	Vertex(glm::vec3(-1.0,  1.0,  1.0)),
 	// back
-	-1.0, -1.0, -1.0,
-	1.0, -1.0, -1.0,
-	1.0,  1.0, -1.0,
-	-1.0,  1.0, -1.0
+	Vertex(glm::vec3(-1.0, -1.0, -1.0)),
+	Vertex(glm::vec3(1.0, -1.0, -1.0)),
+	Vertex(glm::vec3(1.0,  1.0, -1.0)),
+	Vertex(glm::vec3(-1.0,  1.0, -1.0))
 };
+
+void CubeMesh::Load()
+{
+	m_Vbo;
+	glGenBuffers(1, &m_Vbo);
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_Vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(s_Vertices), s_Vertices, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &m_Ibo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Ibo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(s_Indices), s_Indices, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	m_IsLoaded = true;
+}
 
 CubeMesh::CubeMesh()
 {
@@ -68,7 +86,7 @@ void CubeMesh::Draw() const
 	Bind();
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (const void*) offsetof(Vertex, Position));
 
 	// Draw the triangles !
 	glDrawElements(
@@ -78,21 +96,4 @@ void CubeMesh::Draw() const
 		(void*)0									// element array buffer offset
 	);
 	Unbind();
-}
-
-void CubeMesh::Load()
-{
-	m_Vbo;
-	glGenBuffers(1, &m_Vbo);
-
-	glBindBuffer(GL_ARRAY_BUFFER, m_Vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(s_Vertices), s_Vertices, GL_STATIC_DRAW);
-
-	glGenBuffers(1, &m_Ibo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Ibo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(s_Indices), s_Indices, GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	m_IsLoaded = true;
 }
