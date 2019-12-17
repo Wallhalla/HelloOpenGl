@@ -6,7 +6,8 @@
 #include <iostream>
 #include "ShaderProgram.h"
 #include "Vertex.h"
-#include "Cube.h"
+#include "Model.h"
+#include "CubeMesh.h"
 
 
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
@@ -66,29 +67,23 @@ void OpenGlWindow::Show()
 {
 	ShaderProgram program("resources/BasicVertex.shader", "resources/BasicFragment.shader");
 	program.Bind();
-	Cube cube;
+
+	CubeMesh mesh;
+	Model model(mesh);
 
 	float aspectRatio = 1920.f / 1080.f;
 
-	glm::mat4 perspective = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
-	/*glm::mat4 orthographic = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
-
-	program.SetProjectionMatrix(perspective);
+	glm::mat4 projection = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
+	/*glm::mat4 projection = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
+	program.SetProjectionMatrix(projection);
 	
 	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
-
 	program.SetViewMatrix(camera);	
 
 	glEnable(GL_DEPTH_TEST);	
 
-	Transform& trans = cube.GetTransform();	
-	trans.SetTranslation(0.f, 0.f, -10.f);	
-	program.SetModelMatrix(cube);
-	
-	cube.Bind();
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), nullptr);
-	cube.Unbind();
+	Transform& trans = model.GetTransform();	
+	trans.SetTranslation(0.f, 0.f, -10.f);		
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
@@ -96,7 +91,7 @@ void OpenGlWindow::Show()
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		cube.Draw(program);		
+		model.Draw(program);		
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);

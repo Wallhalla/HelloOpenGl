@@ -126,7 +126,7 @@ ShaderProgram::ShaderProgram(const std::string& vertexShaderFile, const std::str
 }
 
 
-void ShaderProgram::SetModelMatrix(Model& model)
+void ShaderProgram::SetModelMatrix(Model& model) const
 {
 	Transform& trans = model.GetTransform();
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ModelMatrix");
@@ -187,12 +187,12 @@ string ShaderProgram::ParseFile(const std::string& shaderfile)
 	return ss.str();
 }
 
-void ShaderProgram::Bind()
+void ShaderProgram::Bind() const
 {
 	glUseProgram(m_ProgramId);
 }
 
-void ShaderProgram::Unbind()
+void ShaderProgram::Unbind() const
 {
 	glUseProgram(0);
 }

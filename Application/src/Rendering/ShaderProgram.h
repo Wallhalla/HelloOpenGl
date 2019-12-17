@@ -10,10 +10,10 @@ class ShaderProgram
 public:
 	ShaderProgram(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
 
-	void Bind();
-	void Unbind();
+	void Bind() const;
+	void Unbind() const;
 
-	void SetModelMatrix(Model& model);
+	void SetModelMatrix(Model& model) const;
 	void SetProjectionMatrix(const glm::mat4& projection);
 	void SetViewMatrix(const glm::mat4& viewMatrix);
 

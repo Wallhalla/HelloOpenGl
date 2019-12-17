@@ -6,9 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Rendering\Cube.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="src\Rendering\Model.h">
       <Filter>Rendering</Filter>
     </ClInclude>
@@ -31,11 +28,10 @@
       <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\Rendering\Vertex.h" />
+    <ClInclude Include="src\Rendering\CubeMesh.h" />
+    <ClInclude Include="src\Rendering\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Rendering\Cube.cpp">
-      <Filter>Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\Rendering\Model.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
@@ -53,5 +49,6 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Rendering\Vertex.cpp" />
+    <ClCompile Include="src\Rendering\CubeMesh.cpp" />
   </ItemGroup>
 </Project>
