@@ -83,14 +83,25 @@ void OpenGlWindow::Show()
 	glEnable(GL_DEPTH_TEST);	
 
 	Transform& trans = model.GetTransform();	
-	trans.SetTranslation(0.f, 0.f, -10.f);		
+	trans.SetTranslation(0.f, 0.f, -5.f);		
+
+	float angleY = 0.0f;
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(m_Window))
 	{
+		angleY += 0.05f;
+
+		if (angleY > 360.0f)
+		{
+			angleY = 0.0f;
+		}
+
+		trans.SetRotation(angleY, angleY, angleY);
+
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+		
 		model.Draw(program);		
 
 		/* Swap front and back buffers */
