@@ -69,7 +69,8 @@
       <AdditionalLibraryDirectories>..\ThirdParty\GLEW\lib;..\ThirdParty\GLFW\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST resources\ (xcopy /Q /E /Y /I resources ..\bin\Debug-x86_64\resources &gt; nul) ELSE (xcopy /Q /Y /I resources ..\bin\Debug-x86_64\resources &gt; nul)</Command>
+      <Command>rmdir /S /Q ..\bin\Debug-x86_64\resources
+IF EXIST resources\ (xcopy /Q /E /Y /I resources ..\bin\Debug-x86_64\resources &gt; nul) ELSE (xcopy /Q /Y /I resources ..\bin\Debug-x86_64\resources &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,28 +93,37 @@
       <AdditionalLibraryDirectories>..\ThirdParty\GLEW\lib;..\ThirdParty\GLFW\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST resources\ (xcopy /Q /E /Y /I resources ..\bin\Release-x86_64\resources &gt; nul) ELSE (xcopy /Q /Y /I resources ..\bin\Release-x86_64\resources &gt; nul)</Command>
+      <Command>rmdir /S /Q ..\bin\Release-x86_64\resources
+IF EXIST resources\ (xcopy /Q /E /Y /I resources ..\bin\Release-x86_64\resources &gt; nul) ELSE (xcopy /Q /Y /I resources ..\bin\Release-x86_64\resources &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Rendering\Colors.h" />
     <ClInclude Include="src\Rendering\CubeMesh.h" />
+    <ClInclude Include="src\Rendering\ElementBufferObject.h" />
     <ClInclude Include="src\Rendering\Mesh.h" />
     <ClInclude Include="src\Rendering\Model.h" />
     <ClInclude Include="src\Rendering\OpenGlWindow.h" />
+    <ClInclude Include="src\Rendering\Scene.h" />
     <ClInclude Include="src\Rendering\ShaderProgram.h" />
     <ClInclude Include="src\Rendering\Transform.h" />
     <ClInclude Include="src\Rendering\Vertex.h" />
-    <ClInclude Include="src\Rendering\VertexBuffer.h" />
+    <ClInclude Include="src\Rendering\VertexArrayObject.h" />
+    <ClInclude Include="src\Rendering\VertexBufferObject.h" />
     <ClInclude Include="src\Rendering\Window.h" />
     <ClInclude Include="src\Rendering\WindowFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rendering\CubeMesh.cpp" />
+    <ClCompile Include="src\Rendering\ElementBufferObject.cpp" />
     <ClCompile Include="src\Rendering\Model.cpp" />
     <ClCompile Include="src\Rendering\OpenGlWindow.cpp" />
+    <ClCompile Include="src\Rendering\Scene.cpp" />
     <ClCompile Include="src\Rendering\ShaderProgram.cpp" />
     <ClCompile Include="src\Rendering\Transform.cpp" />
     <ClCompile Include="src\Rendering\Vertex.cpp" />
+    <ClCompile Include="src\Rendering\VertexArrayObject.cpp" />
+    <ClCompile Include="src\Rendering\VertexBufferObject.cpp" />
     <ClCompile Include="src\Rendering\WindowFactory.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>

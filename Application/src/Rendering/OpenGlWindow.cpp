@@ -9,7 +9,6 @@
 #include "Model.h"
 #include "CubeMesh.h"
 
-
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
 	:m_Title(title), m_Width(width), m_Height(height), m_Window(nullptr)
 {
@@ -69,21 +68,25 @@ void OpenGlWindow::Show()
 	program.Bind();
 
 	CubeMesh mesh;
-	Model model(mesh);
+	Model model1(mesh);
+	Model model2(mesh);
 
 	float aspectRatio = 1920.f / 1080.f;
 
-	glm::mat4 projection = glm::perspective(65.f, aspectRatio, 0.1f, 100.f);
+	glm::mat4 projection = glm::perspective(55.f, aspectRatio, 0.1f, 100.f);
 	/*glm::mat4 projection = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
 	program.SetProjectionMatrix(projection);
 	
-	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
+	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, -20.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f));
 	program.SetViewMatrix(camera);	
 
 	glEnable(GL_DEPTH_TEST);	
 
-	Transform& trans = model.GetTransform();	
-	trans.SetTranslation(0.f, 0.f, -5.f);		
+	Transform& trans1 = model1.GetTransform();	
+	trans1.SetTranslation(5.f, 0.f, -5.f);		
+
+	Transform& trans2 = model2.GetTransform();
+	trans2.SetTranslation(-5.f, 1.f, -5.f);
 
 	float angleY = 0.0f;
 
@@ -97,12 +100,13 @@ void OpenGlWindow::Show()
 			angleY = 0.0f;
 		}
 
-		trans.SetRotation(angleY, angleY, angleY);
+		trans1.SetRotation(angleY, angleY, angleY);
 
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		model.Draw(program);		
+		model1.Draw(program);
+		model2.Draw(program);
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(m_Window);

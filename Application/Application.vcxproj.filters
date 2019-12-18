@@ -6,6 +6,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Rendering\CubeMesh.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rendering\Mesh.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rendering\Model.h">
       <Filter>Rendering</Filter>
     </ClInclude>
@@ -18,7 +24,7 @@
     <ClInclude Include="src\Rendering\Transform.h">
       <Filter>Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rendering\VertexBuffer.h">
+    <ClInclude Include="src\Rendering\Vertex.h">
       <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\Rendering\Window.h">
@@ -27,11 +33,16 @@
     <ClInclude Include="src\Rendering\WindowFactory.h">
       <Filter>Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rendering\Vertex.h" />
-    <ClInclude Include="src\Rendering\CubeMesh.h" />
-    <ClInclude Include="src\Rendering\Mesh.h" />
+    <ClInclude Include="src\Rendering\VertexArrayObject.h" />
+    <ClInclude Include="src\Rendering\Scene.h" />
+    <ClInclude Include="src\Rendering\Colors.h" />
+    <ClInclude Include="src\Rendering\VertexBufferObject.h" />
+    <ClInclude Include="src\Rendering\ElementBufferObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Rendering\CubeMesh.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rendering\Model.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
@@ -44,11 +55,16 @@
     <ClCompile Include="src\Rendering\Transform.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rendering\Vertex.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rendering\WindowFactory.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Rendering\Vertex.cpp" />
-    <ClCompile Include="src\Rendering\CubeMesh.cpp" />
+    <ClCompile Include="src\Rendering\VertexArrayObject.cpp" />
+    <ClCompile Include="src\Rendering\Scene.cpp" />
+    <ClCompile Include="src\Rendering\VertexBufferObject.cpp" />
+    <ClCompile Include="src\Rendering\ElementBufferObject.cpp" />
   </ItemGroup>
 </Project>

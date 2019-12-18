@@ -13,7 +13,9 @@ public:
 
 private:
 	void Load();
-	static bool m_IsLoaded;
-	static unsigned int m_Vbo;
-	static unsigned int m_Ibo;	
+	void Unload();	
+	class VertexBufferObject* m_Vbo;
+	class ElementBufferObject* m_Ibo;
+
+
 };
