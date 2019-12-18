@@ -1,33 +1,24 @@
 #include "Model.h"
+#include "ShaderProgram.h"
+#include "Mesh.h"
 
-Model::Model()		
+Model::Model(const Mesh & mesh)
+	:m_Mesh(mesh)
 {
-	m_Data = new float[4*3] {
-		-1.0f, -1.0f, 0.0f, // links unten
-		1.0f, -1.0f, 0.0f,	// rechts unten
-		-1.0f, 1.0f, 0.f,	// links oben
-		1.0f, 1.0f, 0.f		// rechts oben
-	};
-
-	m_Size = 12 * sizeof(float);
 }
 
 Model::~Model()
-{
-	delete m_Data;
-}
-
-unsigned int Model::GetSize() const
-{
-	return m_Size;
-}
-
-void* Model::GetData() const
-{
-	return m_Data;
+{	
 }
 
 Transform& Model::GetTransform()
 {
 	return m_transform;
+}
+
+void Model::Draw(const ShaderProgram& shader)
+{
+	shader.Bind();	
+	shader.SetModelMatrix(*this);
+	m_Mesh.Draw();	
 }

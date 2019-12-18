@@ -126,7 +126,7 @@ ShaderProgram::ShaderProgram(const std::string& vertexShaderFile, const std::str
 }
 
 
-void ShaderProgram::SetModelMatrix(Model& model)
+void ShaderProgram::SetModelMatrix(Model& model) const
 {
 	Transform& trans = model.GetTransform();
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ModelMatrix");
@@ -134,26 +134,20 @@ void ShaderProgram::SetModelMatrix(Model& model)
 	glm::mat4 translation = glm::translate(glm::mat4(1.f), trans.GetTranslation());
 
 	glm::vec3 rot = trans.GetRotation();
-	glm::mat4 rotation = glm::mat4(1.f);
+	glm::mat4 rotationX = glm::mat4(1.f);
+	glm::mat4 rotationY = glm::mat4(1.f);
+	glm::mat4 rotationZ = glm::mat4(1.f);
+	
 
-	if (rot.x != 0.f)
-	{		
-		rotation = glm::rotate(glm::mat4(1.f), glm::radians(rot.x), glm::vec3(1.f, 0.f, 0.0f));
-	}
+	rotationX = glm::rotate(glm::mat4(1.f), glm::radians(rot.x), glm::vec3(1.f, 0.f, 0.0f));	
+	rotationY = glm::rotate(glm::mat4(1.f), glm::radians(rot.y), glm::vec3(0.f, 1.f, 0.0f));	
+	rotationZ = glm::rotate(glm::mat4(1.f), glm::radians(rot.z), glm::vec3(0.f, 0.f, 1.0f));
 
-	if (rot.y != 0.f)
-	{
-		rotation = glm::rotate(glm::mat4(1.f), glm::radians(rot.y), glm::vec3(0.f, 1.f, 0.0f));
-	}
-
-	if (rot.z != 0.f)
-	{
-		rotation = glm::rotate(glm::mat4(1.f), glm::radians(rot.z), glm::vec3(0.f, 0.f, 1.0f));
-	}
-
+	glm::mat4 finalRot = rotationX * rotationY * rotationZ;
+	
 	glm::mat4 scale = glm::scale(glm::mat4(1.f), trans.GetScale());
 
-	const glm::mat4 modelmatrix = translation * rotation * scale;
+	const glm::mat4 modelmatrix = translation * finalRot * scale;
 
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &modelmatrix[0][0]);
 }
@@ -187,12 +181,12 @@ string ShaderProgram::ParseFile(const std::string& shaderfile)
 	return ss.str();
 }
 
-void ShaderProgram::Bind()
+void ShaderProgram::Bind() const
 {
 	glUseProgram(m_ProgramId);
 }
 
-void ShaderProgram::Unbind()
+void ShaderProgram::Unbind() const
 {
 	glUseProgram(0);
 }

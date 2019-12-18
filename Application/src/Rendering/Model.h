@@ -4,15 +4,13 @@
 class Model
 {
 public:
-	Model();	
+	Model(const class Mesh& mesh);	
 	~Model();	
 
-	unsigned int GetSize() const;
-	void* GetData() const;
 	Transform& GetTransform();
+	void Draw(const class ShaderProgram& shader);
 
 private:
 	Transform m_transform;
-	float* m_Data;
-	unsigned int m_Size;
+	const class Mesh& m_Mesh;
 };
