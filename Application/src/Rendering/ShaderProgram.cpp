@@ -155,15 +155,28 @@ void ShaderProgram::SetModelMatrix(Model& model) const
 void ShaderProgram::SetProjectionMatrix(const glm::mat4& projection)
 {	
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ProjectionMatrix");
-
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &projection[0][0]);
 }
 
 void ShaderProgram::SetViewMatrix(const glm::mat4& viewMatrix)
 {
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ViewMatrix");
-
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &viewMatrix[0][0]);
+}
+
+void ShaderProgram::SetAmbientLight(float intensity, const glm::vec4& ambientColor)
+{
+	GLint intensityId = glGetUniformLocation(m_ProgramId, "AmbientLightIntensity");
+	glUniform1f(intensityId, intensity);
+
+	GLint colorId = glGetUniformLocation(m_ProgramId, "AmbientLightColor");
+	glUniform4fv(colorId, 1, &ambientColor[0]);
+}
+
+void ShaderProgram::SetSun(const glm::vec3 & sunlight)
+{
+	GLint sunId = glGetUniformLocation(m_ProgramId, "SunLight");
+	glUniform3fv(sunId, 1, &sunlight[0]);
 }
 
 string ShaderProgram::ParseFile(const std::string& shaderfile)

@@ -73,20 +73,24 @@ void OpenGlWindow::Show()
 
 	float aspectRatio = 1920.f / 1080.f;
 
-	glm::mat4 projection = glm::perspective(55.f, aspectRatio, 0.1f, 100.f);
+	glm::mat4 projection = glm::perspective(glm::radians(55.f), aspectRatio, 0.1f, 100.f);
 	/*glm::mat4 projection = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
 	program.SetProjectionMatrix(projection);
 	
-	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, -20.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f));
+	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 10.f, 0.f), glm::vec3(0.f, 5.f, -5.f), glm::vec3(0.f, 1.f, 0.f));
 	program.SetViewMatrix(camera);	
 
-	glEnable(GL_DEPTH_TEST);	
+	glEnable(GL_DEPTH_TEST);
 
 	Transform& trans1 = model1.GetTransform();	
-	trans1.SetTranslation(5.f, 0.f, -5.f);		
+	trans1.SetTranslation(5.f, 0.f, -8.f);		
 
 	Transform& trans2 = model2.GetTransform();
-	trans2.SetTranslation(-5.f, 1.f, -5.f);
+	trans2.SetTranslation(-2.f, 1.f, -8.f);
+
+	// Lighting
+	program.SetAmbientLight(0.3f);
+	program.SetSun(glm::vec3(0.f, -1.f, -1.f));
 
 	float angleY = 0.0f;
 

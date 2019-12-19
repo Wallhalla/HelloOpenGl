@@ -17,6 +17,9 @@ public:
 	void SetProjectionMatrix(const glm::mat4& projection);
 	void SetViewMatrix(const glm::mat4& viewMatrix);
 
+	void SetAmbientLight(float intensity, const glm::vec4& ambientColor = glm::vec4(1.f, 1.f, 1.f, 1.f));
+	void SetSun(const glm::vec3& sunlight);
+
 public:
 
 	std::string ParseFile(const std::string& shaderfile);
