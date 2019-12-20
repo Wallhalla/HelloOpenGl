@@ -101,6 +101,7 @@ IF EXIST resources\ (xcopy /Q /E /Y /I resources ..\bin\Release-x86_64\resources
   <ItemGroup>
     <ClInclude Include="src\Rendering\Colors.h" />
     <ClInclude Include="src\Rendering\CubeMesh.h" />
+    <ClInclude Include="src\Rendering\Lights.h" />
     <ClInclude Include="src\Rendering\ElementBufferObject.h" />
     <ClInclude Include="src\Rendering\Mesh.h" />
     <ClInclude Include="src\Rendering\Model.h" />

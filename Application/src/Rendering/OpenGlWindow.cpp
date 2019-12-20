@@ -8,6 +8,7 @@
 #include "Vertex.h"
 #include "Model.h"
 #include "CubeMesh.h"
+#include "Lights.h"
 
 OpenGlWindow::OpenGlWindow(const std::string& title, unsigned int width, unsigned int height)
 	:m_Title(title), m_Width(width), m_Height(height), m_Window(nullptr)
@@ -87,6 +88,14 @@ void OpenGlWindow::Show()
 
 	Transform& trans2 = model2.GetTransform();
 	trans2.SetTranslation(-2.f, 1.f, -5.f);
+
+	DirectionalLight dirLight;
+	dirLight.Ambient = glm::vec4(0.3f, 0.3f, 0.3, 1.f);
+	dirLight.Diffuse = glm::vec4(1.f, 1.f, 1.f, 1.f);
+	dirLight.Specular = glm::vec4(0.f, 1.f, 0.f, 1.f);
+	dirLight.Direction = glm::vec3(0.f, -1.f, 0.f);
+
+	program.SetDirectionalLight(dirLight);
 
 	float angleY = 0.0f;
 

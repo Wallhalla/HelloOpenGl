@@ -16,6 +16,8 @@ public:
 	void SetModelMatrix(Model& model) const;
 	void SetProjectionMatrix(const glm::mat4& projection);
 	void SetViewMatrix(const glm::mat4& viewMatrix);
+	void SetDirectionalLight(struct DirectionalLight dirLight);
+	
 
 public:
 

@@ -9,6 +9,7 @@
 #include <fstream>      // std::ifstream
 #include "Model.h"
 #include "GLM/glm.hpp"
+#include "Lights.h"
 
 using namespace std;
 
@@ -164,6 +165,18 @@ void ShaderProgram::SetViewMatrix(const glm::mat4& viewMatrix)
 	GLint locationId = glGetUniformLocation(m_ProgramId, "ViewMatrix");
 
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, &viewMatrix[0][0]);
+}
+
+void ShaderProgram::SetDirectionalLight(DirectionalLight dirLight)
+{
+	/*GLint ambientId = glGetUniformLocation(m_ProgramId, "dirLight.ambient");
+	glUniform4fv(ambientId, 1, &dirLight.Ambient[0]);*/
+
+	GLint diffuseId = glGetUniformLocation(m_ProgramId, "dirLight.diffuse");
+	glUniform4fv(diffuseId, 1, &dirLight.Diffuse[0]);
+
+	GLint directionId = glGetUniformLocation(m_ProgramId, "dirLight.direction");
+	glUniform4fv(directionId, 1, &dirLight.Direction[0]);
 }
 
 string ShaderProgram::ParseFile(const std::string& shaderfile)

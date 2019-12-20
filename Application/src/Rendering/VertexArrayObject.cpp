@@ -29,7 +29,10 @@ void VertexArrayObject::SetupAttribPointers()
 {
 	glEnableVertexAttribArray(VertexAttributeLocation::Position);
 	glEnableVertexAttribArray(VertexAttributeLocation::VertexColor);
+	glEnableVertexAttribArray(VertexAttributeLocation::Normal);
 
 	glVertexAttribPointer(VertexAttributeLocation::Position, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Position));
 	glVertexAttribPointer(VertexAttributeLocation::VertexColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Color));
+	glVertexAttribPointer(VertexAttributeLocation::Normal, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Normal));
+
 }

@@ -48,6 +48,7 @@
     <ClInclude Include="src\Rendering\WindowFactory.h">
       <Filter>Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rendering\Lights.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rendering\CubeMesh.cpp">

@@ -17,38 +17,45 @@ void CubeMesh::Load()
 	m_Vbo = new VertexBufferObject();
 	m_Ibo = new ElementBufferObject();
 
+	glm::vec3 frontNormal = glm::vec3(0.f, 0.f, 1.f);
+	glm::vec3 backNormal = glm::vec3(0.f, 0.f, -1.f);
+	glm::vec3 leftNormal = glm::vec3(-1.f, 0.f, 0.f);
+	glm::vec3 rightNormal = glm::vec3(1.f, 0.f, 0.f);
+	glm::vec3 topNormal = glm::vec3(0.f, 1.f, 0.f);
+	glm::vec3 bottomNormal = glm::vec3(0.f, -1.f, 0.f);
+
 	Vertex vertices[24]
 	{
 		// front
-		Vertex(glm::vec3(-1.0, -1.0,  1.0), Color::Red),		// 0 links unten vorne
-		Vertex(glm::vec3(1.0, -1.0,  1.0),	Color::Red),		// 1 rechts unten vorne
-		Vertex(glm::vec3(1.0,  1.0,  1.0),	Color::Red),		// 2 rechts oben vorne
-		Vertex(glm::vec3(-1.0,  1.0,  1.0), Color::Red),		// 3 links oben vorne
+		Vertex(glm::vec3(-1.0, -1.0,  1.0), Color::Red, frontNormal),		// 0 links unten vorne
+		Vertex(glm::vec3(1.0, -1.0,  1.0),	Color::Red, frontNormal),		// 1 rechts unten vorne
+		Vertex(glm::vec3(1.0,  1.0,  1.0),	Color::Red, frontNormal),		// 2 rechts oben vorne
+		Vertex(glm::vec3(-1.0,  1.0,  1.0), Color::Red, frontNormal),		// 3 links oben vorne
 		// back
-		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::Green),		// 4 links unten hinten
-		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::Green),		// 5 rechts unten hinten
-		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Green),		// 6 rechts oben hinten
-		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Green),		// 7 links oben hinten
+		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::Green, backNormal),		// 4 links unten hinten
+		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::Green, backNormal),		// 5 rechts unten hinten
+		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Green, backNormal),		// 6 rechts oben hinten
+		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Green, backNormal),		// 7 links oben hinten
 		// left
-		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::Blue),		// 8 links unten hinten
-		Vertex(glm::vec3(-1.0, -1.0, 1.0),	Color::Blue),		// 9 links unten vorne
-		Vertex(glm::vec3(-1.0,  1.0, 1.0),	Color::Blue),		// 10 links oben vorne
-		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Blue),		// 11 links oben hinten
+		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::Blue, leftNormal),		// 8 links unten hinten
+		Vertex(glm::vec3(-1.0, -1.0, 1.0),	Color::Blue, leftNormal),		// 9 links unten vorne
+		Vertex(glm::vec3(-1.0,  1.0, 1.0),	Color::Blue, leftNormal),		// 10 links oben vorne
+		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Blue, leftNormal),		// 11 links oben hinten
 		// right
-		Vertex(glm::vec3(1.0, -1.0, 1.0),	Color::Grey),		// 12 rechts unten vorne
-		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::Grey),		// 13 rechts unten hinten
-		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Grey),		// 14 rechts oben hinten
-		Vertex(glm::vec3(1.0,  1.0, 1.0),	Color::Grey),		// 15 rechts oben vorne
+		Vertex(glm::vec3(1.0, -1.0, 1.0),	Color::Grey, rightNormal),		// 12 rechts unten vorne
+		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::Grey, rightNormal),		// 13 rechts unten hinten
+		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Grey, rightNormal),		// 14 rechts oben hinten
+		Vertex(glm::vec3(1.0,  1.0, 1.0),	Color::Grey, rightNormal),		// 15 rechts oben vorne
 		// top
-		Vertex(glm::vec3(-1.0, 1.0, 1.0),	Color::Yellow),		// 16 links oben vorne
-		Vertex(glm::vec3(1.0, 1.0, 1.0),	Color::Yellow),		// 17 rechts oben vorne
-		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Yellow),		// 18 rechts oben hinten
-		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Yellow),		// 19 links oben hinten
+		Vertex(glm::vec3(-1.0, 1.0, 1.0),	Color::Yellow, topNormal),		// 16 links oben vorne
+		Vertex(glm::vec3(1.0, 1.0, 1.0),	Color::Yellow, topNormal),		// 17 rechts oben vorne
+		Vertex(glm::vec3(1.0,  1.0, -1.0),	Color::Yellow, topNormal),		// 18 rechts oben hinten
+		Vertex(glm::vec3(-1.0,  1.0, -1.0), Color::Yellow, topNormal),		// 19 links oben hinten
 		// bottom
-		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::White),		// 20 links unten hinten
-		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::White),		// 21 rechts unten hinten
-		Vertex(glm::vec3(1.0,  -1.0, 1.0),	Color::White),		// 22 rechts unten vorne
-		Vertex(glm::vec3(-1.0,  -1.0, 1.0), Color::White)		// 23 links unten vorne
+		Vertex(glm::vec3(-1.0, -1.0, -1.0), Color::White, bottomNormal),		// 20 links unten hinten
+		Vertex(glm::vec3(1.0, -1.0, -1.0),	Color::White, bottomNormal),		// 21 rechts unten hinten
+		Vertex(glm::vec3(1.0,  -1.0, 1.0),	Color::White, bottomNormal),		// 22 rechts unten vorne
+		Vertex(glm::vec3(-1.0,  -1.0, 1.0), Color::White, bottomNormal)		// 23 links unten vorne
 	};
 
 	const unsigned int indices[36]
