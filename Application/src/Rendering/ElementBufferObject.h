@@ -2,6 +2,7 @@
 #include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
 
+/* aka Indexbuffer*/
 class ElementBufferObject
 {
 public:

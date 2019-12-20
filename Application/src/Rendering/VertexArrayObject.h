@@ -1,5 +1,11 @@
 #pragma once
 
+enum VertexAttributeLocation
+{
+	Position = 0,
+	VertexColor = 1
+};
+
 class VertexArrayObject
 {
 public:

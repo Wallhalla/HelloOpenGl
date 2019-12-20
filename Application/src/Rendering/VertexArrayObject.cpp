@@ -27,9 +27,9 @@ void VertexArrayObject::Unbind() const
 
 void VertexArrayObject::SetupAttribPointers()
 {
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Position));
+	glEnableVertexAttribArray(VertexAttributeLocation::Position);
+	glEnableVertexAttribArray(VertexAttributeLocation::VertexColor);
 
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Color));
+	glVertexAttribPointer(VertexAttributeLocation::Position, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Position));
+	glVertexAttribPointer(VertexAttributeLocation::VertexColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Color));
 }

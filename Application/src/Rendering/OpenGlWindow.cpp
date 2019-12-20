@@ -77,16 +77,16 @@ void OpenGlWindow::Show()
 	/*glm::mat4 projection = glm::ortho(-10.f * aspectRatio, 10.f * aspectRatio, -10.f, 10.f, 10.0f, -10.f);*/
 	program.SetProjectionMatrix(projection);
 	
-	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 3.f, 0.f), glm::vec3(0.f, 3.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
+	glm::mat4 camera = glm::lookAt(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 0.f, -1.f), glm::vec3(0.f, 1.f, 0.f));
 	program.SetViewMatrix(camera);	
 
 	glEnable(GL_DEPTH_TEST);	
 
 	Transform& trans1 = model1.GetTransform();	
-	trans1.SetTranslation(1.f, 0.f, -5.f);		
+	trans1.SetTranslation(2.f, 0.f, -5.f);		
 
 	Transform& trans2 = model2.GetTransform();
-	trans2.SetTranslation(-1.f, 1.f, -5.f);
+	trans2.SetTranslation(-2.f, 1.f, -5.f);
 
 	float angleY = 0.0f;
 

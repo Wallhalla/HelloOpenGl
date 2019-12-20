@@ -11,6 +11,4 @@ public:
 	void RemoveModel(Model* model);
 
 	void DrawScene();
-private:
-	VertexArrayObject vao;	
 };
