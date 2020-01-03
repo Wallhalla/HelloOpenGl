@@ -10,32 +10,25 @@ struct DirectionalLight
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;
-	vec3 direction;
+	vec3 direction;	
 };
 
 uniform DirectionalLight dirLight;
 
 void main()
 {
-	// calc diffuse
-	vec3 normal = normalize(FragNormal);
+	// Set Ambient Light Input
+	vec4 ambientLightInput = dirLight.ambient;
 
-	vec3 light = normalize(dirLight.direction) * 1;
+	// Calculate Diffuse Light Input
+	vec3 normal = normalize(FragNormal);
+	vec3 light = normalize(dirLight.direction) * -1;
 	
 	float diffuseFactor = max(dot(normal, light), 0.0f);
-	vec4 diffuseLight = vec4(0.0, 0.0, 0.0, 1.0);
-
-	if (diffuseFactor <= 0.0)
-	{
-		color = vec4(0.0, 0.0, 1.0, 1.0);		 
-	}
-	else
-	{
-		diffuseLight = vec4(diffuseLight.xyz * diffuseFactor, 1.0);
-		color = (dirLight.ambient + diffuseLight) * FragColor;
-	}
+	vec4 diffuseLightInput = dirLight.diffuse * diffuseFactor;	
 	
-	// calc specular
+	// calc specular (Todo...)
+	vec4 specularLightInput = vec4(0.0, 0.0, 0.0, 0.0);
 
-	
+	color = (ambientLightInput + diffuseLightInput + specularLightInput) * FragColor;
 };

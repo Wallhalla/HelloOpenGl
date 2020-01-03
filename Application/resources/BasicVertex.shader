@@ -13,7 +13,14 @@ uniform mat4 ViewMatrix;
 
 void main()
 {
-	gl_Position = ProjectionMatrix * ViewMatrix * ModelMatrix * vec4(position.x, position.y, position.z, 1.0f);
+	// Calculate the Vertex Position.
+	mat4 modelView = ViewMatrix * ModelMatrix;
+	gl_Position = ProjectionMatrix * modelView * vec4(position.x, position.y, position.z, 1.0f);	
+
+	// Calculate the Vertex Normal.
+	mat4 normalMatrix = transpose(inverse(modelView));
+	FragNormal = (normalMatrix * vec4(normal, 0.0)).xyz;
+
+	// Pass the Color to the FragmentShader.
 	FragColor = color;
-	FragNormal = vec3(0.0, 1.0, 0.0);
 }
