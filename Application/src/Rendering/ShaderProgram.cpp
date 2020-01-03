@@ -169,14 +169,14 @@ void ShaderProgram::SetViewMatrix(const glm::mat4& viewMatrix)
 
 void ShaderProgram::SetDirectionalLight(DirectionalLight dirLight)
 {
-	/*GLint ambientId = glGetUniformLocation(m_ProgramId, "dirLight.ambient");
-	glUniform4fv(ambientId, 1, &dirLight.Ambient[0]);*/
+	GLint ambientId = glGetUniformLocation(m_ProgramId, "dirLight.ambient");
+	glUniform4fv(ambientId, 1, &dirLight.Ambient[0]);
 
 	GLint diffuseId = glGetUniformLocation(m_ProgramId, "dirLight.diffuse");
 	glUniform4fv(diffuseId, 1, &dirLight.Diffuse[0]);
 
 	GLint directionId = glGetUniformLocation(m_ProgramId, "dirLight.direction");
-	glUniform4fv(directionId, 1, &dirLight.Direction[0]);
+	glUniform3fv(directionId, 1, &dirLight.Direction[0]);
 }
 
 string ShaderProgram::ParseFile(const std::string& shaderfile)

@@ -15,6 +15,9 @@
     <ClInclude Include="src\Rendering\ElementBufferObject.h">
       <Filter>Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rendering\Lights.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rendering\Mesh.h">
       <Filter>Rendering</Filter>
     </ClInclude>
@@ -48,7 +51,6 @@
     <ClInclude Include="src\Rendering\WindowFactory.h">
       <Filter>Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rendering\Lights.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rendering\CubeMesh.cpp">
